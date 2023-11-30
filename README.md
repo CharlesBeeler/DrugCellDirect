@@ -1,7 +1,9 @@
-# DrugCell: a visible neural network model for drug response prediction 
-DrugCell is an interpretable neural network-based model that predicts 
-cell response to a wide range of drugs. Unlike fully-connected neural networks,
-connectivity of neurons in the DrugCell mirrors a 
+# DrugCellDirect: a visible neural network model for drug response prediction for a specific patient
+DrugCellDirect is an interpretable neural network-based model that predicts 
+the likelihood of a durable response to a wide range of drugs and treatment options including Lifestyle Optimization for a specific patient. 
+The goal of this model is to make personalized cancer treatments a reality for a much larger population of patients, with a focus on cancers where there are limited treatment options available.
+
+Unlike fully-connected neural networks, connectivity of neurons in the DrugCell mirrors a 
 biological hierarchy (e.g. Gene Ontology), so that the information travels 
 only between subsystems (or pathways) with known hierarchical relationship 
 during the model training. 
@@ -9,6 +11,7 @@ This feature of the framework allows for identification of
 subsystems in the hierarchy that are important to the model's prediction, 
 warranting further investigation on underlying biological mechanisms of 
 cell response to treatments. 
+This leverages the work done in the DrugCell model.
 
 The current version (v1.0) of the DrugCell model 
 is trained using 509,294 (cell line, drug) pairs across 
@@ -22,6 +25,15 @@ mutational status of the top 15% most frequently mutated genes (n = 3,008)
 in cancer. 
 Drugs are encoded using Morgan Fingerprint (radius = 2), and the resulting 
 feature vectors are binary vectors of length 2,048. 
+
+DrugCellDirect will enable a user to add details and data specific to an individual patient for the model to train on. This will include things like mutations within tumors, genetics of the individual, HLA subtypes, blood and other tests and scans for the patient. Treatment history and any other data that is relevant to that specific patient.
+
+DrugCellDirect will also train on all available data related to active clinical trials, prior trial results and research related to drug targets, drugs, etc.
+
+DrugCellDirect will initially focus on a specific cancer with some specific mutations in order to be able to train the model more quickly and ensure this is done with a focus on a specific target. We'll add more cancers as this moves along.  Initially the focus will be on colorectal cancer (CRC) that has metastasized to the liver and potentially also the lungs. It will focus on CRC that is MSS (microsatellite stable) with a TP53 mutation and a KRAS mutation.  Because of the range of KRASmut's and a significant amount of work focused on KRAS Codon 12, this model will focus on Codon 13 and initially focus on KRAS G13D mutations.
+
+The more specific data on a patient that can be provided the more targeted the results will be.  
+
 
 # Environment set up for training and testing of DrugCell
 DrugCell training/testing scripts require the following environmental setup:
